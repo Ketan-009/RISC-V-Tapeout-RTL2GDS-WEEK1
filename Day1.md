@@ -7,7 +7,7 @@ This comprehensive guide covers RTL design methodology using Verilog HDL, simula
 ## Table of Contents
 
 <details>
-<summary>Core Concepts</summary>
+<summary>Core Concepts and Icarus Verilog Setup</summary>
 
 ### Simulator
 A simulation engine validates digital circuit behavior by processing test vectors and generating outputs. Essential for pre-implementation verification.
@@ -23,11 +23,6 @@ Design Under Test (DUT) ←→ Testbench
         ↓
     Simulation Results
 ```
-
-</details>
-
-<details>
-<summary>Icarus Verilog Setup</summary>
 
 ### Simulation Workflow
 Icarus Verilog provides complete open-source simulation environment following this flow:
