@@ -303,3 +303,12 @@ show
 <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/2dc16271-7508-4f68-9577-fc0621c25c71" />
 
 </details>
+
+## Key Learning Outcomes
+
+- Constant Propagation: Eliminate redundant logic through compile-time analysis
+- Sequential Optimization: Minimize flip-flops and combinational logic in FSMs
+- Load Balancing: Strategic logic cloning for timing and fanout optimization
+- Register Retiming: Pipeline balance without functional changes
+
+**Workshop Progress**: Day 2 Complete | Next: Gate Level Simulation
