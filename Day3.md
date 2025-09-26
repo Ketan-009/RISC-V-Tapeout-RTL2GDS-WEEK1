@@ -240,54 +240,66 @@ endmodule
 ## Output
 <img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/8f7425be-ff17-43a3-8248-c554ed209ace" />
 
+## Lab 7: Counter Optimization - LSB Output
 
-</details>
+### Verilog Code:
 
-</details>
-
----
-
-<details>
-<summary><strong>Synthesis Flow Integration</strong></summary>
-
-**Standard Optimization Flow:**
-1. **Read Design:** Import Verilog/VHDL source files
-2. **Pre-Synthesis Optimization:** Apply `opt_clean -purge`
-3. **Technology Mapping:** Execute `abc -liberty` with target library
-4. **Post-Synthesis Analysis:** Verify area, timing, and power metrics
-
-**Key Synthesis Directives:**
-```tcl
-opt_clean -purge
-opt_merge
-opt_share
-opt_muxtree
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+endmodule
 ```
 
+**Analysis:** Only LSB (count[0]) is used as output. Synthesis optimizes away unused upper bits, resulting in a single flip-flop toggle circuit.
+
+<img width="1919" height="652" alt="image" src="https://github.com/user-attachments/assets/fbfc801c-4b0b-47a3-be23-49c0534781ef" />
+
+## Output
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/74636da4-67da-4f5e-9312-2b13412195ad" />
+
+## Lab 8: Counter Optimization - State Detection
+
+### Verilog Code:
+
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[2:0] == 3'b100);
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+endmodule
+```
+
+**Analysis:** Output detects when counter equals 4 (3'b100). All counter bits are required for comparison logic, preventing optimization of unused flip-flops.
+
+<img width="1919" height="650" alt="image" src="https://github.com/user-attachments/assets/0e65b9c1-e7e2-4774-b0ba-c40e7b493bfe" />
+
+### Sythesis Commands:
+
+```tcl
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog counter_opt2.v 
+opt_clean -purge
+synth -top counter_opt
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+## Output
+<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/2dc16271-7508-4f68-9577-fc0621c25c71" />
+
 </details>
-
-
-<details>
-<summary><strong>Performance Metrics and Validation</strong></summary>
-
-**Optimization Success Criteria:**
-- **Area Reduction:** Gate count decrease percentage
-- **Timing Improvement:** Critical path delay reduction
-- **Power Savings:** Dynamic and static power reduction
-- **Functional Correctness:** RTL-to-gate equivalence verification
-
-**Validation Methodology:**
-1. **Formal Verification:** Prove functional equivalence
-2. **Timing Analysis:** Static timing analysis (STA)
-3. **Power Analysis:** Dynamic power simulation
-4. **Physical Validation:** DRC and LVS checks
-
-</details>
-
-
-
-## Conclusion
-
-Circuit optimization techniques form the foundation of efficient VLSI design, enabling high-performance, low-power digital systems. Through systematic application of constant propagation, state optimization, cloning, and retiming methodologies, designers achieve significant improvements in area, timing, and power characteristics while maintaining functionality.
-
-The laboratory experiments demonstrate practical applications showing how synthesis tools automatically apply optimization algorithms to transform RTL descriptions into efficient gate-level implementations. Mastery of these techniques is essential for modern digital design engineers working on complex SoC and FPGA projects.
