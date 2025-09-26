@@ -2,11 +2,11 @@
 
 This guide explores optimization methodologies for combinational and sequential digital circuits, focusing on industry-standard techniques that enhance performance and efficiency in VLSI design.
 
+## Core Concepts
 
 <details>
-<summary><strong>Core Concepts</strong></summary>
-
-## 1. Introduction to Optimization
+<summary>1. Introduction to Optimization</summary>
+	
 Digital circuit optimization is fundamental to achieving high-performance, power-efficient designs in modern VLSI systems.
 
 **Primary Optimization Goals:**
@@ -17,8 +17,12 @@ Digital circuit optimization is fundamental to achieving high-performance, power
 
 <img width="330" height="231" alt="image" src="https://github.com/user-attachments/assets/6bc91d34-b9cb-45e0-9095-6ede1d3222dd" />
 
+</details>
 
-## 2. Constant Propagation Methodology
+---
+
+<details>
+<summary>2. Constant Propagation Methodology</summary>
 
 Constant propagation identifies and replaces variables holding constant values throughout the design's execution, significantly reducing logic complexity.
 
@@ -41,8 +45,12 @@ After:  Y = B (A completely removed)
 
 <img width="475" height="313" alt="image" src="https://github.com/user-attachments/assets/838790c7-f5b6-40c6-8404-5df258d7a756" />
 
+</details>
 
-## 3. State Machine Optimization
+---
+
+<details>
+<summary>3. State Machine Optimization</summary>
 
 FSM optimization encompasses techniques to streamline state-based designs while maintaining behavioral correctness.
 
@@ -62,8 +70,12 @@ FSM optimization encompasses techniques to streamline state-based designs while 
 
 <img width="259" height="259" alt="image" src="https://github.com/user-attachments/assets/f34ad161-2906-4b13-acc1-1938e74e2a67" />
 
+</details>
 
-## 4. Logic Cloning Techniques
+---
+
+<details>
+<summary>4. Logic Cloning Techniques</summary>
 
 Logic cloning strategically duplicates circuit elements to optimize system performance, particularly for timing violations and load balancing.
 
@@ -85,8 +97,12 @@ Optimized: Multiple drivers → Distributed loads
 
 <img width="355" height="303" alt="image" src="https://github.com/user-attachments/assets/84914474-d7db-415a-b9ab-2cb8bfe437c0" />
 
+</details>
 
-## 5. Register Retiming
+---
+
+<details>
+<summary>5. Register Retiming</summary>
 
 Register retiming optimizes sequential circuits by strategically relocating flip-flops without altering input-output relationships.
 
@@ -103,16 +119,16 @@ Register retiming optimizes sequential circuits by strategically relocating flip
 
 <img width="828" height="508" alt="image" src="https://github.com/user-attachments/assets/4df154d6-b76f-4ad0-8f38-6a3ab840c973" />
 
-
 </details>
 
+---
 
+
+
+## Practical Implementation Labs
 
 <details>
-<summary><strong> Practical Implementation Labs</strong></summary>
-
-## Lab 1: Basic Conditional Logic
-
+<summary>Lab 1: Basic Conditional Logic</summary>
 ### Verilog Code:
 
 ```verilog
@@ -139,9 +155,12 @@ show
  ## Output
 <img width="1919" height="791" alt="image" src="https://github.com/user-attachments/assets/e3faf41a-9c08-4e77-a1e1-5a32eb8ef538" />
 
+</details>
 
+---
 
-## Lab 2: Inverted Multiplexer
+<details>
+<summary>Lab 2: Inverted Multiplexer</summary>
 
 ### Verilog Code:
 
@@ -158,8 +177,12 @@ endmodule
 ## Output
 <img width="1919" height="805" alt="image" src="https://github.com/user-attachments/assets/ce8a163f-dbae-46ba-8bf2-242933deb1ec" />
 
+</details>
 
-## Lab 3: Complex Boolean Logic
+---
+
+<details>
+<summary>Lab 3: Complex Boolean Logic</summary>
 
 ### Verilog Code:
 
@@ -176,8 +199,12 @@ endmodule
 ## Output
 <img width="1919" height="881" alt="image" src="https://github.com/user-attachments/assets/703fb9ac-f2b6-4a12-a6a7-e1a13b1e1e0d" />
 
+</details>
 
-## Lab 4: Multi-Input Optimization
+---
+
+<details>
+<summary>Lab 4: Multi-Input Optimization</summary>
 
 ### Verilog Code:
 
@@ -194,8 +221,12 @@ endmodule
 ## Output
 <img width="1919" height="888" alt="image" src="https://github.com/user-attachments/assets/faef8221-9d94-401b-afff-c6c33893ab7c" />
 
+</details>
 
-Lab 5: Sequential Constant Assignment
+---
+
+<details>
+<summary>Lab 5: Sequential Constant Assignment</summary>
 
 ### Verilog Code:
 
@@ -217,8 +248,12 @@ endmodule
 ## Output 
 <img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/2606d7cb-ed7f-48b7-a0c1-28119565c837" />
 
+</details>
 
-## Lab 6: Always-High Output Register
+---
+
+<details>
+<summary>Lab 6: Always-High Output Register</summary>
 
 ### Verilog Code:
 
@@ -240,7 +275,12 @@ endmodule
 ## Output
 <img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/8f7425be-ff17-43a3-8248-c554ed209ace" />
 
-## Lab 7: Counter Optimization - LSB Output
+</details>
+
+---
+
+<details>
+<summary>Lab 7: Counter Optimization - LSB Output</summary>
 
 ### Verilog Code:
 
@@ -265,8 +305,13 @@ endmodule
 ## Output
 <img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/74636da4-67da-4f5e-9312-2b13412195ad" />
 
-## Lab 8: Counter Optimization - State Detection
+</details>
 
+---
+
+<details>
+<summary>Lab 8: Counter Optimization - State Detection</summary>
+	
 ### Verilog Code:
 
 ```verilog
@@ -303,6 +348,9 @@ show
 <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/2dc16271-7508-4f68-9577-fc0621c25c71" />
 
 </details>
+
+---
+
 
 ## Key Learning Outcomes
 
