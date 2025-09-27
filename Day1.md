@@ -2,6 +2,8 @@
 
 This comprehensive guide covers RTL design methodology using Verilog HDL, simulation with Icarus Verilog, and logic synthesis using Yosys. Build foundational knowledge through structured hands-on exercises.
 
+**Note:** Click the sections below to expand.
+
 ---
 
 ## Table of Contents
