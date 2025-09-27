@@ -1,39 +1,29 @@
-# Day 4 Enhancements
+# Enhanced Comprehensive Theory Sections
 
-## Enhanced Theory Sections
+## Gate-Level Simulation
+### Primary Verification Goals
+- **Modes**: Ensure all operational modes are verified.
+- **Equivalence**: Verify that the gate-level simulation matches the expected behavior of the RTL.
+- **Reset Integrity**: Confirm that reset signals behave as expected across all scenarios.
+- **DFT/Scan Considerations**: Assess the impact of design for test (DFT) and scan techniques on simulation results.
 
-### Gate-Level Simulation
-- **Definition**: Gate-level simulation is a type of simulation that models the behavior of a digital circuit at the gate level, allowing for a detailed verification of the circuit's functionality.
-- **Purpose**: It helps in verifying the logical correctness of the design post-synthesis, ensuring that the synthesized netlist behaves as intended.
-- **Steps Involved**:
-  - Create a gate-level netlist from RTL code.
-  - Apply test vectors to the gate-level model.
-  - Observe outputs and compare them with expected results.
-- **Advantages**:
-  - Provides a more accurate representation of the circuit's timing and logic.
-  - Can identify issues related to the synthesis process that might not be visible in RTL simulation.
-- **Disadvantages**:
-  - More time-consuming than RTL simulations.
-  - Requires additional resources for simulation.
+### Strategy and Pass Criteria
+- Define clear metrics for pass/fail criteria.
+- Document verification strategies and methodologies used during testing.
 
-### Synthesis-Simulation Mismatch
-- **Definition**: This refers to discrepancies between the behavior of a simulation model and the synthesized hardware.
-- **Common Causes**:
-  - Differences in timing due to optimization techniques used during synthesis.
-  - Variations in the logic due to synthesis tools making assumptions.
-- **Techniques to Resolve**:
-  - Perform static timing analysis to identify timing violations.
-  - Utilize assertions to check for expected behaviors during simulation.
+## Synthesis-Simulation Mismatch
+### Key Drivers and Prevention
+- **Root Causes**: Identify sources of mismatch such as incorrect assumptions made during synthesis.
+- **Assignment Semantics**: Understand how different assignment types can affect simulation outcomes.
+- **Safe Coding Practices**: Implement coding standards that minimize the risk of mismatches.
+- **Tooling**: Utilize tools effectively to catch mismatches early in the design process.
+- **Debug Flow**: Establish a systematic debug flow to identify and resolve mismatches.
+- **Sign-off Mindset**: Cultivate a mindset focused on thorough verification before sign-off.
 
-### Blocking vs Non-Blocking
-- **Definition**: 
-  - **Blocking**: Assignments that occur sequentially and can lead to unintended behavior if not used carefully.
-  - **Non-Blocking**: Assignments that allow for concurrent execution and are essential for accurate modeling of sequential logic.
-- **When to Use**:
-  - Use blocking assignments for combinational logic.
-  - Use non-blocking assignments for sequential logic to avoid race conditions.
-- **Comparison**:
-  - Blocking assignments can lead to issues in a simulation that does not reflect the real hardware behavior, while non-blocking assignments can correctly model the flow of data in a clocked system.
-
-## Existing Lab Content
-- ... (Keep existing lab content and structure intact)
+## Blocking vs Non-Blocking Assignments
+### Usage Guidance and Pitfalls
+- **Mental Model**: Develop a clear understanding of the execution order of blocking and non-blocking assignments.
+- **Correct Use Patterns**: Provide examples of appropriate use cases for each type of assignment.
+- **Common Pitfalls**: Highlight frequent mistakes and how to avoid them.
+- **Review Checklist**: Create a checklist to verify the correct application of assignments in designs.
+- **Expected Outcomes**: Describe the expected results when using each type properly.
