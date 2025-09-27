@@ -1,85 +1,117 @@
-# Day 4: Gate-Level Simulation (GLS), Blocking vs. Non-Blocking in Verilog, and Synthesis-Simulation Mismatch
+# Day 4: GLS, Blocking vs Non‑Blocking, and Sim–Synth Mismatch
 
-This session explores three interconnected aspects of digital design verification: Gate-Level Simulation (GLS), Verilog assignment semantics, and synthesis-simulation mismatches.
+## Table of Contents
+- [1. Gate‑Level Simulation (GLS)](#1-gate-level-simulation-gls)
+- [2. Synthesis–Simulation Mismatch](#2-synthesis–simulation-mismatch)
+- [3. Blocking vs Non‑Blocking](#3-blocking-vs-non-blocking)
+  - [3.1 Blocking](#31-blocking)
+  - [3.2 Non‑Blocking](#32-non-blocking)
+  - [3.3 Comparison](#33-comparison)
+- [4. Labs](#4-labs)
+- [5. Summary](#5-summary)
 
----
+## 1. Gate‑Level Simulation (GLS)
+GLS runs the synthesized netlist to validate functionality, reset behavior, and design‑for‑test structures beyond RTL abstraction.  
+Two common modes are functional GLS (zero/unit delay) and timing GLS with SDF back‑annotation to expose setup/hold issues and hazards.
 
-## 1. Gate-Level Simulation (GLS) Fundamentals
+## 2. Synthesis–Simulation Mismatch
+Mismatches arise from ambiguous or non‑synthesizable RTL, incomplete sensitivity lists, unintended latches, or reliance on initial/delay semantics not preserved in hardware.  
+Adopt strict synthesizable coding styles, complete all decision paths, and keep combinational and sequential logic cleanly separated.
 
-GLS is a crucial post-synthesis verification step where the synthesized **netlist** is validated against actual gate primitives and interconnect delays. It represents a realistic verification of the design in silicon.
+## 3. Blocking vs Non‑Blocking
+Blocking updates immediately in statement order, fitting combinational modeling when ordering is correct.  
+Non‑blocking schedules updates at the end of the timestep, matching flip‑flop semantics and avoiding read‑write races across clocked blocks.
 
-### Purpose and Significance
+### 3.1 Blocking
+- Executes in source order and is order‑sensitive.  
+- Preferred inside always @(*) for pure combinational logic.
 
-GLS ensures comprehensive validation:
+### 3.2 Non‑Blocking
+- Defers writes to the NBA phase to emulate registers.  
+- Preferred inside always @(posedge clk …) for sequential logic.
 
-* **Functional Accuracy:** Verifies synthesis correctly translated the RTL.
-* **Timing Verification:** Uses **SDF (Standard Delay Format)** annotation to check for setup and hold time violations.
-* **Power & Testability:** Provides switching data for power analysis and confirms **DFT** (scan chains) operation.
+### 3.3 Comparison
 
-### Implementation Flow
+| Blocking (=) | Non‑Blocking (<=) |
+|---|---|
+| Immediate update within the active region | Deferred update at end of timestep |
+| Order matters inside a block | Order largely irrelevant across flops |
+| Best in always @(*) combinational | Best in @(posedge …) sequential |
+| Can race if misused for flops | Avoids x‑prop/race across registers |
 
-The process involves: Netlist generation $\rightarrow$ **Delay Annotation** (SDF) $\rightarrow$ Testbench reuse $\rightarrow$ Comparison analysis.
+## 4. Labs
 
----
+### Lab 1: Ternary MUX (RTL)
+```verilog
+module ternary_operator_mux (input i0, input i1, input sel, output y);
+  assign y = sel ? i1 : i0;
+endmodule
+```
 
-## 2. Assignment Semantics in Verilog
+### Lab 2: Synthesize with Yosys
+Create synth.ys:
+```tcl
+read_verilog ternary_operator_mux.v
+synth -top ternary_operator_mux
+write_verilog mux_netlist.v
+```
+Run:
+```sh
+yosys -s synth.ys
+```
 
-The choice between blocking and non-blocking assignments dictates hardware inference and simulation behavior.
+### Lab 3: Functional GLS
+Compile with standard cell models and primitives (example Sky130 paths):
+```sh
+iverilog $PDK_ROOT/libs.ref/sky130_fd_sc_hd/verilog/primitives.v \
+         $PDK_ROOT/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v \
+         mux_netlist.v tb_mux.v
+vvp a.out
+```
 
-### Blocking Assignment (`=`)
+### Lab 4: Bad MUX (fix pitfalls)
+Problem (incomplete sensitivity + NBA in comb):
+```verilog
+module bad_mux (input i0, input i1, input sel, output reg y);
+  always @(sel) begin
+    if (sel) y <= i1; else y <= i0;
+  end
+endmodule
+```
+Fix:
+```verilog
+always @(*) begin
+  if (sel) y = i1; else y = i0;
+end
+```
 
-* **Execution:** Sequential, with immediate evaluation. Each statement completes before the next begins.
-* **Appropriate Usage:** **Combinational logic** (`always @(*)`) and temporary variables within procedural code.
-* **Characteristic:** **Order-dependent** behavior.
+### Lab 5: GLS on Bad vs Fixed
+Run GLS for both versions and compare waveforms to observe divergence caused by sensitivity omissions and scheduling differences.  
+Expect alignment after adopting always @(*) with blocking for combinational logic.
 
-### Non-Blocking Assignment (`<=`)
+### Lab 6: Blocking Order Caveat
+Problem:
+```verilog
+always @(*) begin
+  d = x & c;   // uses old x
+  x = a | b;   // updates too late
+end
+```
+Fix:
+```verilog
+always @(*) begin
+  x = a | b;   // produce
+  d = x & c;   // then consume
+end
+```
 
-* **Execution:** Deferred; all right-hand side expressions are evaluated, but updates occur **concurrently at the end of the time step**.
-* **Appropriate Usage:** **Sequential logic** (registers/flip-flops) in clocked blocks (`always @(posedge clk)`).
-* **Characteristic:** **Order-independent** behavior.
+### Lab 7: Re‑Synthesize
+Re‑run synthesis on the fixed combinational design to confirm no latch inference and expected gate structure:
+```sh
+yosys -p "read_verilog blocking_caveat_fixed.v; synth -top blocking_caveat; write_verilog caveat_netlist.v"
+```
 
-| Assignment | Operator | Execution | Hardware Inference |
-| :--- | :--- | :--- | :--- |
-| **Blocking** | `=` | Immediate (Sequential) | Combinational (Gates) |
-| **Non-Blocking**| `<=` | Scheduled (Concurrent) | Sequential (Flip-Flops) |
-
----
-
-## 3. Synthesis-Simulation Mismatch Analysis
-
-Mismatches occur when simulation and synthesis tools interpret Verilog differently.
-
-### Root Causes
-
-1.  **Sensitivity List Incompleteness:** Simulators strictly observe the list, while synthesis infers the full list, causing behavioral divergence (e.g., using `always @(sel)` instead of `always @(*) `for combinational logic).
-2.  **Assignment Ordering Issues:** Blocking assignments create dependencies that synthesis might optimize differently.
-3.  **Initialization/Reset Handling:** Reliance on implicit initialization in simulation that is not translated to synchronous resets in synthesis.
-
-### Prevention Strategies
-
-* Use `always @(*)` for all combinational blocks.
-* Use **blocking (`=`) exclusively for combinational logic**.
-* Use **non-blocking (`<=`) consistently for sequential logic**.
-* Implement comprehensive, synchronous reset mechanisms.
-
----
-
-## Practical Examples (Pitfalls & Resolutions)
-
-### Problem 1: Bad MUX Pattern (Combinational Logic)
-
-| Problematic Code | Issue | Corrected Code |
-| :--- | :--- | :--- |
-| `always @(sel) begin y <= i1; ...` | Incomplete sensitivity list; Non-blocking (`<=`) inappropriate for combinational logic. | `always @(*) begin y = i1; ...` |
-
-### Problem 2: Assignment Order Dependency (Blocking Caveat)
-
-| Problematic Code | Issue | Resolution |
-| :--- | :--- | :--- |
-| `d = intermediate & c; intermediate = a | b;` | `d` uses the stale (previous) value of `intermediate` because blocking updates are immediate and sequential. | Compute `intermediate` first, then use it: `intermediate = a | b; d = intermediate & c;` |
-
----
-
-## Summary
-
-**GLS** bridges the gap between RTL abstraction and silicon reality. **Disciplined coding**—using blocking assignments for combinational logic and non-blocking for sequential logic—is essential to prevent **synthesis-simulation mismatches** and ensure a robust VLSI implementation.
+## 5. Summary
+- GLS validates netlist functionality and timing intent; use functional GLS early and timing GLS (SDF) when supported.  
+- Prevent sim–synth mismatches with complete sensitivity, explicit defaults, and synthesizable, unambiguous RTL.  
+- Use blocking for combinational and non‑blocking for sequential, avoiding mixes within the same always block.
