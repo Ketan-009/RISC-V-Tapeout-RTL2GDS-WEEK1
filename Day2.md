@@ -2,6 +2,8 @@
 
 This comprehensive guide explores timing characterization files, synthesis methodologies, and robust flip-flop design patterns essential for digital circuit implementation.
 
+**Note:** Click the sections below to expand.
+
 ---
 
 ## Table of Contents
