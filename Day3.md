@@ -2,6 +2,8 @@
 
 This guide explores optimization methodologies for combinational and sequential digital circuits, focusing on industry-standard techniques that enhance performance and efficiency in VLSI design.
 
+**Note :** Click the sections below to expand.
+
 ## Core Concepts
 
 <details>
