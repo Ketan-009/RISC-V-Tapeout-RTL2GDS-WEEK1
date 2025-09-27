@@ -1,4 +1,4 @@
-# 🚀 RISC-V RTL2GDS Tapeout Journey
+# RISC-V RTL2GDS Tapeout Journey
 
 <div align="center">
 
@@ -14,14 +14,14 @@
 
 ---
 
-## 🎯 About This Repository
+## About This Repository
 
 This repository chronicles my participation in **India's Most Ambitious RISC-V SoC Tapeout Program** - a groundbreaking initiative by **IIT Gandhinagar** and **VLSI System Design (VSD)**.
 
-### 🌟 Mission
+### Mission
 Contributing to India's semiconductor self-reliance through hands-on chip design expertise, aligned with the national goal of **"One Tapeout Per Student"**.
 
-### 📚 Program Highlights
+### Program Highlights
 - **20-week intensive journey** from RTL to silicon
 - **Industry-grade tools** and methodologies
 - **End-to-end chip design** experience
@@ -29,7 +29,7 @@ Contributing to India's semiconductor self-reliance through hands-on chip design
 
 ---
 
-### 📋 Week 1 ✅ **COMPLETED**
+### Week 1 ✅ **COMPLETED**
 
 This Labs were organized in 5 days. This includes:
 
@@ -51,7 +51,7 @@ This Labs were organized in 5 days. This includes:
 
 <div align="center">
 
-**🚀 Building India's Semiconductor Future, One Chip at a Time 🚀**
+** Building India's Semiconductor Future, One Chip at a Time **
 
 *Proudly part of IIT Gandhinagar × VSD RISC-V SoC Tapeout Program*
 
