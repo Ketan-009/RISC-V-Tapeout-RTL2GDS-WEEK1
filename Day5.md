@@ -128,7 +128,7 @@ end
 - The loop must run a fixed number of times that the compiler can figure out beforehand
 - They're great for creating repetitive hardware patterns
 
-<img width="448" height="192" alt="image" src="https://github.com/user-attachments/assets/9e9ebd35-9bb1-4470-b10a-4b1fbedf1915" />
+<img width="448" height="192" alt="image" src="https://github.com/user-attachments/assets/f1a84baa-82a8-4327-b5ea-bd39fb84f049" />
 
 </details>
 
@@ -152,7 +152,7 @@ generate
 endgenerate
 ```
 
-<img width="503" height="265" alt="image" src="https://github.com/user-attachments/assets/e3e172d5-ab53-423b-aec2-cf753047bbb2" />
+<img width="503" height="265" alt="image" src="https://github.com/user-attachments/assets/8d735379-5d64-4f2e-82c5-f0d36b6b60e7" />
 
 </details>
 
@@ -169,7 +169,7 @@ A ripple carry adder is like a chain of calculators working together to add larg
 - The carry from one position feeds into the next position
 - It's called "ripple" because the carry signal moves like a wave from right to left
 
-<img width="1070" height="525" alt="image" src="https://github.com/user-attachments/assets/47684313-062a-4b2c-932e-0bf1a5ce68e8" />
+<img width="1070" height="525" alt="image" src="https://github.com/user-attachments/assets/c3a76005-e1e3-4a82-b1f2-7e50ed0240ba" />
 
 </details>
 
@@ -190,7 +190,7 @@ end
 endmodule
 ```
 
-<img width="1919" height="721" alt="image" src="https://github.com/user-attachments/assets/1838cd4e-3624-4b37-b4ea-d1608225305c" />
+<img width="1919" height="721" alt="image" src="https://github.com/user-attachments/assets/6d88af0b-f68d-4d84-a0c3-5712efa12139" />
 
 **Analysis:** This code will infer a latch because `y` is not assigned when `i0` is false.
 
@@ -203,7 +203,7 @@ gtkwave tb_incomp_if.vcd
 ```
 
 ## Output:
-<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/ca2d2f2c-1ccb-47b6-99a9-cfbfa334802a" />
+<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/8e9216c5-cf81-4add-a14e-d2ea68cb9225" />
 
 </details>
 
@@ -223,7 +223,7 @@ show
 ```
 
 ## Synthesized Design
-<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/46313c13-7633-45d7-b90b-ab5079215ee1" />
+<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/1b0eade3-c18f-4497-a774-56c3bb7cb857" />
 
 **Note:** We aimed and wrote the code for MUX but we got Latch due to Incomplete If Case.
 
@@ -246,7 +246,7 @@ begin
 end
 endmodule
 ```
-<img width="1919" height="668" alt="image" src="https://github.com/user-attachments/assets/672e1ce3-2e1f-49ad-a93f-7bcfa39b4a7f" />
+<img width="1919" height="668" alt="image" src="https://github.com/user-attachments/assets/d0256e91-e072-4745-b752-098785214686" />
 
 ## Simulation Steps:
 
@@ -257,7 +257,7 @@ gtkwave tb_incomp_if2.vcd
 ```
 
 ## Output:
-<img width="1918" height="645" alt="image" src="https://github.com/user-attachments/assets/b5ddb39a-b4d4-4e96-8463-392b08235196" />
+<img width="1918" height="645" alt="image" src="https://github.com/user-attachments/assets/7d6ac4d9-f3f4-4d9c-90c7-2ff32ed82580" />
 
 </details>
 
@@ -277,7 +277,7 @@ show
 ```
 
 ## Synthesized Design
-<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/f4abb63f-e6bf-4059-af5c-f4ef63e9c3d7" />
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/9110cc12-b74f-42c8-85cb-e66a9471bcff" />
 
 **Note:** Even with multiple conditions, incomplete coverage still results in latch inference.
 
@@ -301,7 +301,7 @@ end
 endmodule
 ```
 
-<img width="1919" height="678" alt="image" src="https://github.com/user-attachments/assets/208d002e-2cd8-4e89-8989-012866d6fa69" />
+<img width="1919" height="678" alt="image" src="https://github.com/user-attachments/assets/a827b152-f3ff-47fc-a58b-9d75877a1d1c" />
 
 ## Simulation Steps:
 
@@ -312,7 +312,7 @@ gtkwave tb_comp_case.vcd
 ```
 
 ## Output:
-<img width="1919" height="696" alt="image" src="https://github.com/user-attachments/assets/99f3c5f2-090b-4cc2-bc67-f4450bb17274" />
+<img width="1919" height="696" alt="image" src="https://github.com/user-attachments/assets/7914b87c-edf0-4155-b209-33a7ad49417f" />
 
 </details>
 
@@ -332,7 +332,7 @@ show
 ```
 
 ## Synthesized Design
-<img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/336fd824-060d-46c1-83ba-8dd91ffe1bdf" />
+<img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/95dbbad4-f807-4e50-9f8d-df934f0ceb1f" />
 
 **Note:** Complete case coverage results in clean combinational logic without latches.
 
@@ -358,7 +358,7 @@ end
 endmodule
 ```
 
-<img width="1919" height="682" alt="image" src="https://github.com/user-attachments/assets/d1e1b45a-e796-4205-bf38-a54cedad34a6" />
+<img width="1919" height="682" alt="image" src="https://github.com/user-attachments/assets/6da1ddd4-7b79-4d82-9b75-8757a480cdd7" />
 
 ## Simulation Steps:
 
@@ -369,7 +369,7 @@ gtkwave tb_bad_case.vcd
 ```
 
 ## Output:
-<img width="1919" height="667" alt="image" src="https://github.com/user-attachments/assets/a01f136a-a36b-48a2-9b08-416e7bc89f12" />
+<img width="1919" height="667" alt="image" src="https://github.com/user-attachments/assets/30733731-5aba-4f11-904a-60924f7166b0" />
 
 </details>
 
@@ -397,7 +397,7 @@ end
 endmodule
 ```
 
-<img width="1919" height="665" alt="image" src="https://github.com/user-attachments/assets/3702733b-12ca-4090-8a9f-afe73013105d" />
+<img width="1919" height="665" alt="image" src="https://github.com/user-attachments/assets/2a2735d1-44d2-41b5-b23f-55f7392ba3f0" />
 
 ## Command for Synthesizing
 
@@ -412,7 +412,7 @@ show
 ```
 
 ## Synthesized Design
-<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/1ec74182-3753-4ac1-a075-3a97fee30a9b" />
+<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/7e5facd8-4f26-4d17-ad51-cd79a5696da4" />
 
 </details>
 
@@ -435,7 +435,7 @@ end
 end
 endmodule
 ```
-<img width="1919" height="680" alt="image" src="https://github.com/user-attachments/assets/3a7e26f0-b58c-4c9e-b85f-254ec690ae23" />
+<img width="1919" height="680" alt="image" src="https://github.com/user-attachments/assets/bdec76a5-2043-4b14-ab1f-efa4ee67664b" />
 
 ## Simulation Steps:
 
@@ -446,7 +446,7 @@ gtkwave tb_mux_generate.vcd
 ```
 
 ## Output:
-<img width="1919" height="721" alt="image" src="https://github.com/user-attachments/assets/66d13eb8-4794-4e4b-9000-be62360619e3" />
+<img width="1919" height="721" alt="image" src="https://github.com/user-attachments/assets/ba0132f1-f98b-41d4-9d08-e79447f84829" />
 
 </details>
 
@@ -477,7 +477,7 @@ y_int = 8'b0;
 end
 endmodule
 ```
-<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/ffe6a9c2-0b6f-4657-abc1-22331098caec" />
+<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/eb9eceb6-417a-4903-a311-7cdf44564e7d" />
 
 ## Simulation Steps:
 
@@ -488,7 +488,7 @@ gtkwave tb_demux_case.vcd
 ```
 
 ## Output:
-<img width="1919" height="753" alt="image" src="https://github.com/user-attachments/assets/6c34e7a4-3783-4c74-b220-58c6ef0339e9" />
+<img width="1919" height="753" alt="image" src="https://github.com/user-attachments/assets/45a6b10c-10f8-4108-9680-42ca349d683d" />
 
 </details>
 
@@ -513,7 +513,7 @@ end
 end
 endmodule
 ```
-<img width="1919" height="669" alt="image" src="https://github.com/user-attachments/assets/f41df4ba-562f-40db-b033-4478d4e49563" />
+<img width="1919" height="669" alt="image" src="https://github.com/user-attachments/assets/d0f8f9e1-168c-4ccc-bb04-720e90a2dc66" />
 
 ## Simulation Steps:
 
@@ -524,7 +524,7 @@ gtkwave tb_demux_generate.vcd
 ```
 
 ## Output:
-<img width="1919" height="812" alt="image" src="https://github.com/user-attachments/assets/580b67a9-6cd8-417d-9b83-fbf3a6f8dc20" />
+<img width="1919" height="812" alt="image" src="https://github.com/user-attachments/assets/3e82b8a7-1936-45d6-92de-34a92a1e93df" />
 
 </details>
 
@@ -552,7 +552,7 @@ assign sum[8] = int_co[7];
 endmodule
 ```
 
-<img width="1919" height="660" alt="image" src="https://github.com/user-attachments/assets/474191fb-d4ad-4bb8-8aaa-5e6ba3741fe1" />
+<img width="1919" height="660" alt="image" src="https://github.com/user-attachments/assets/7eb5f24c-970f-4ca0-9efd-ebd4c8d02235" />
 
 ## Verilog Code[Full Adder]:
 
@@ -562,7 +562,7 @@ module fa (input a , input b , input c, output co , output sum);
 endmodule
 ```
 
-<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/ebb0f289-ac44-4629-ac0f-fa7bd6106617" />
+<img width="1919" height="662" alt="image" src="https://github.com/user-attachments/assets/1ade973e-a99c-4e2f-b5a7-b400959772a7" />
 
 ## Simulation Steps:
 
@@ -573,7 +573,7 @@ gtkwave tb_rca.vcd
 ```
 
 ## Output:
-<img width="1919" height="670" alt="image" src="https://github.com/user-attachments/assets/bdd677e9-3727-497b-a957-a451051a7f24" />
+<img width="1919" height="670" alt="image" src="https://github.com/user-attachments/assets/c627297b-7048-4329-be30-3d4413c23444" />
 
 </details>
 
