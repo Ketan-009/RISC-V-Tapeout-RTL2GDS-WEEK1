@@ -283,7 +283,7 @@ gtkwave tb_bad_mux.vcd
 <img width="1919" height="703" alt="image" src="https://github.com/user-attachments/assets/9967d777-023f-4aab-b2a5-b279b7728ad7" />
 
 ## GLS of Bad_Mux
-<img width="1918" height="682" alt="image" src="https://github.com/user-attachments/assets/2660f068-1a22-4ddf-a10d-2b5d82ceea34" />
+<img width="1918" height="682" alt="image" src="https://github.com/user-attachments/assets/5804b896-7e0f-4023-8949-8f0c0ac01ba3" />
 
 </details>
 
@@ -303,7 +303,7 @@ end
 endmodule
 ```
 
-<img width="1919" height="685" alt="image" src="https://github.com/user-attachments/assets/f572c9b5-cda9-4fda-8325-834465f7be24" />
+<img width="1919" height="685" alt="image" src="https://github.com/user-attachments/assets/7585df1a-9754-4cec-b3ea-83bc27ceff50" />
 
 **Root Cause:** Variable used before assignment in blocking context
 
@@ -311,7 +311,7 @@ endmodule
 
 ## Waveform Generated
 
-<img width="1919" height="673" alt="image" src="https://github.com/user-attachments/assets/661b25f8-b632-4b19-8cdd-b8a4ad4e50fe" />
+<img width="1919" height="673" alt="image" src="https://github.com/user-attachments/assets/6179afee-eea5-4bf9-af61-7995704c7db6" />
 
 
 </details>
@@ -321,11 +321,13 @@ endmodule
 
 ## Synthesized Design
 
-<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/9328d6bb-75f4-4513-8c52-f5c944db9b71" />
+<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/e4591cfe-a5fe-4e2b-a623-1b6d876b89db" />
 **Objective :** Compare the GLS and RTL simulation 
+
 ## GLS:
 
-<img width="1919" height="742" alt="image" src="https://github.com/user-attachments/assets/84b3fdfe-6371-4f04-b163-544182536045" />
+<img width="1919" height="742" alt="image" src="https://github.com/user-attachments/assets/926e9b53-1ae6-477e-97de-a614dd64388b" />
+
 </details>
 
 </details>
