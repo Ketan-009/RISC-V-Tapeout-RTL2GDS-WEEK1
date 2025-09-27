@@ -2,6 +2,8 @@
 
 This guide explores into advanced synthesis concepts, focusing on timing optimization, area optimization, power optimization, and advanced Verilog constructs. This session includes practical labs to understand synthesis trade-offs and optimization techniques.
 
+**Note:** Click the sections below to expand.
+
 ## Core Concepts 
 
 <details>
